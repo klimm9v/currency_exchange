@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="{{ url_for('static', filename='images/istockphoto.jpg') }}" type="image/x-icon">
+    <title>Конвертер валют | convert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        form {
+            margin: 0 auto;
+            max-width: 300px;
+        }
+        .class_h1 {
+            margin-top: 95px;
+
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .user-actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .user-actions a {
+            color: #fff;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 5px;  /* Добавляем отступы между кнопками */
+        }
+
+        .user-actions a:hover {
+            background-color: #45a049;
+        }
+        .icon_img{
+            height: 50px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="user-actions">
+        <div>
+            <a href="/login">Вход</a><span> | </span><a href="/register">Регистрация</a>
+        </div>
+    </div>
+    <!-- остальная форма и скрипты -->
+    <h1 class="class_h1">Конвертер валют</h1>
+    <form action="/convert" method="post">
+        <label for="rate">Курс (рубли за доллар):</label>
+        <input type="text" id="rate" name="rate"><br>
+        <label for="amount">Сумма в рублях:</label>
+        <input type="text" id="amount" name="amount"><br>
+        <input type="submit" value="Конвертировать">
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+</body>
+</html>
