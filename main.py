@@ -87,5 +87,5 @@ def convert():
 
 
 
-if __name__ == '__main__':  # Создаем таблицу пользователей в базе данных
+if __name__ == '__main__':  
     app.run(debug=True)
